@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  margin: 100px auto;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(179, 178, 178, 0.9);
+}
+
+.section_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+}
+
+.widthHeight {
+  width: 300px;
+  height: 40px;
+}
+
+.title {
+  align-self: center;
+}
+
+.toDoName {
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.fa-plus {
+  position: relative;
+  bottom: 30px;
+  left: 270px;
+}
+
+.todos {
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid grey;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.toDoItems {
+  align-self: center;
+  margin-left: 10px;
+}
+
+.todos-01 {
+  display: flex;
+  align-items: center;
+}
+
+.fa-sync {
+  margin-right: 10px;
+}
+
+.fas {
+  align-self: center;
+  color: grey;
+}
+
+.fa-ellipsis-v {
+  justify-self: end;
+  margin-right: 18px;
+}
+
+button {
+  border: none;
+  margin-top: 5px;
+}
