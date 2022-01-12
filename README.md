@@ -24,7 +24,7 @@ Run the following commands to clone and run it.
 
 ### To Install Packages
 
-'npm install'
+`npm install`
 
 ### To run 
 
