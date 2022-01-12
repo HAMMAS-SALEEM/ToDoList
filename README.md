@@ -30,11 +30,11 @@ Run the following commands to clone and run it.
 
 `npm install`
 
-### To start project on local server
+### To run project on local server
 
 `npm start`
 
-### To run with vs code 
+### To run project with vs code 
 
 `code .`
 
