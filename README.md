@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # To-Do List
-> This website GoodBooks provides users a convenient way to keep track of their books or reading lists. Users can add and remove books from the list of books they curate on the website.
+> This web application provides users a convenient way to keep track of their daily routine works. Users can add and remove tasks from the list of tasks they curate on the website.
 
 ## Built With
 
