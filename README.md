@@ -34,7 +34,7 @@ Run the following commands to clone and run it.
 
 `npm start`
 
-### To run project with vs code 
+### To open project with vs code 
 
 `code .`
 
