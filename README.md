@@ -20,7 +20,7 @@ Run the following commands to clone and run it.
 
 ### To clone the repository
 
-  `git@github.com:HAMMAS-SALEEM/ToDoList.git`
+  `git clone git@github.com:HAMMAS-SALEEM/ToDoList.git`
 
 ### To enter Directory
 
@@ -30,7 +30,11 @@ Run the following commands to clone and run it.
 
 `npm install`
 
-### To run 
+### To start project on local server
+
+`npm start`
+
+### To run with vs code 
 
 `code .`
 
