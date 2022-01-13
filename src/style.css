@@ -80,9 +80,14 @@ section {
 }
 
 .fa-ellipsis-v {
+  display: none;
   justify-self: end;
   margin-right: 18px;
 }
+
+/* .fa-trash-alt {
+  display: none;
+} */
 
 button {
   border: none;
