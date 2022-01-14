@@ -109,6 +109,11 @@ section {
   display: inherit;
 }
 
+.fas:hover,.fas:focus {
+  color: black;
+  cursor: pointer;
+}
+
 button {
   border: none;
   margin-top: 5px;

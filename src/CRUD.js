@@ -1,42 +1,41 @@
 export const addItem = (arr, value) => {
-  if (JSON.parse(localStorage.getItem("todos")) == null) {
+  if (JSON.parse(localStorage.getItem('todos')) == null) {
     arr = [];
   } else {
-    arr = JSON.parse(localStorage.getItem("todos"));
+    arr = JSON.parse(localStorage.getItem('todos'));
   }
 
-  let length = arr.length + 1;
-  console.log(arr);
-  let obj = {
+  const length = arr.length + 1;
+  const obj = {
     description: value,
     completed: false,
     index: length,
   };
   arr.push(obj);
-  localStorage.setItem("todos", JSON.stringify(arr));
+  localStorage.setItem('todos', JSON.stringify(arr));
 };
 
 export const removeItem = (id) => {
-  let arr = JSON.parse(localStorage.getItem("todos"));
-  arr = arr.filter((e) => e.index != id);
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].index = i+1;
+  let arr = JSON.parse(localStorage.getItem('todos'));
+  arr = arr.filter((e) => e.index.toString() !== id.toString());
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].index = i + 1;
   }
-  localStorage.setItem("todos", JSON.stringify(arr));
+  localStorage.setItem('todos', JSON.stringify(arr));
 };
 
 const updateItem = (value, id) => {
-  let arr = JSON.parse(localStorage.getItem("todos"));
+  const arr = JSON.parse(localStorage.getItem('todos'));
   arr[id - 1].description = value.trim();
-  localStorage.setItem("todos", JSON.stringify(arr));
+  localStorage.setItem('todos', JSON.stringify(arr));
 };
 
 export const getDescriptionInput = (input, arr, id) => {
   const inputDescription = input;
-  input.addEventListener("keyup", () => {
-    const valLen = inputDescription.value.length;
+  input.addEventListener('keyup', () => {
+    // const valLen = inputDescription.value.length;
     // if (valLen > 0) {
-      updateItem(inputDescription.value, id);
+    updateItem(inputDescription.value, id);
     // } else {
     //   setTimeout(() => {
     //     inputDescription.value = arr[id - 1].description;
@@ -49,7 +48,7 @@ export const displayToDos = (locStorage, output) => {
   output.innerHTML = null;
   locStorage.forEach((item) => {
     if (!item.completed) {
-        output.innerHTML += `<li class="todos">
+      output.innerHTML += `<li class="todos">
         <ul class="todos-01" >
         <li><input type="checkbox" id="check-${item.index}" class=" toDoItems"></li>
         <li><input type='text' value="${item.description}" class="toDoItems tdt inputs" id=${item.index} readOnly></input></li>
@@ -57,8 +56,8 @@ export const displayToDos = (locStorage, output) => {
         <i class="fas fa-ellipsis-v"></i>
         <i class="fas fa-trash-alt" id="${item.index}"></i>
     </li>`;
-    } else  {
-        output.innerHTML += `<li class="todos">
+    } else {
+      output.innerHTML += `<li class="todos">
         <ul class="todos-01">
         <li><input type="checkbox" class=" toDoItems" id="check-${item.index}" checked></li>
         <li><input type='text' value="${item.description}" class="toDoItems tdt inputs completed" id="${item.index}" readOnly></input></li>
