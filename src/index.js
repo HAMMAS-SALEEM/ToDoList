@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
 
 addBtn.addEventListener('click', () => {
   if (input.value === '' || input.value === null) {
-    alert('Please insert a todo')
+    alert('Please insert a todo');
   } else {
     const todoContainer = document.querySelector('.todos-container');
     const inputVal = input.value;
@@ -41,7 +41,7 @@ addBtn.addEventListener('click', () => {
 todoContainer.addEventListener('click', (e) => {
   if (e.target.tagName === 'I' && e.target.classList.value === 'fas fa-trash-alt') {
     const {
-      id
+      id,
     } = e.target;
     removeItem(id);
     const locStorage = JSON.parse(localStorage.getItem('todos'));
@@ -50,7 +50,7 @@ todoContainer.addEventListener('click', (e) => {
     e.target.readOnly = false;
 
     const {
-      id
+      id,
     } = e.target;
     const arr = JSON.parse(localStorage.getItem('todos'));
     getDescriptionInput(e.target, arr, id);
