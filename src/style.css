@@ -109,7 +109,8 @@ section {
   display: inherit;
 }
 
-.fas:hover,.fas:focus {
+.fas:hover,
+.fas:focus {
   color: black;
   cursor: pointer;
 }

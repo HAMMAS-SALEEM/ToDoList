@@ -35,6 +35,7 @@ addBtn.addEventListener('click', () => {
   const inputVal = input.value;
   addItem(arr, inputVal);
   const locStorage = JSON.parse(localStorage.getItem('todos'));
+  input.value = '';
   displayToDos(locStorage, todoContainer);
 });
 
