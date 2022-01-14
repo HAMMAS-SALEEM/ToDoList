@@ -21,6 +21,12 @@ section {
   box-shadow: 0 0 10px rgba(179, 178, 178, 0.9);
 }
 
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  border: none;
+}
+
 .section_header {
   display: flex;
   justify-content: space-between;

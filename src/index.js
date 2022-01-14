@@ -2,8 +2,10 @@ import './style.css';
 import {
   addItem,
   removeItem,
-  updateItem,
-  displayToDos
+  displayToDos,
+  getDescriptionInput,
+  markCompleted,
+  clearMethod
 } from './CRUD.js'
 import {
   update
@@ -15,6 +17,7 @@ const trashBtn = document.querySelector('.fa-trash-alt')
 const dragBtn = document.querySelector('.fa-ellipsis-v')
 const input = document.querySelector('.toDoName')
 const locStorage = JSON.parse(localStorage.getItem('todos'));
+const clearCompleted = document.querySelector('.clear-completed')
 let updateArr;
 
 let arr;
@@ -25,6 +28,9 @@ if (locStorage == null) {
 }
 
 
+window.addEventListener('load', () => {
+  displayToDos(arr, todoContainer)
+})
 
 addBtn.addEventListener('click', () => {
   const todoContainer = document.querySelector('.todos-container');
@@ -41,28 +47,17 @@ todoContainer.addEventListener('click', (e) => {
     removeItem(id);
     let locStorage = JSON.parse(localStorage.getItem('todos'));
     displayToDos(locStorage, todoContainer);
-  } else if(e.target.tagName=='INPUT'){
-    console.log(e)
+  } else if (e.target.tagName == 'INPUT' && e.target.type !== "checkbox" ) {
+    e.target.readOnly = false;
+    let id = e.target.id
+    let arr = JSON.parse(localStorage.getItem('todos'));
+    getDescriptionInput(e.target, arr, id);
+  // } else if (e.target.tagName == 'INPUT' && e.target.type === "checkbox" ) {
+  //    let id = e.target.id.replace("check-", "");
+  //    markCompleted(e.target, id, todoContainer);
   }
-})
+});
 
-
-// todoContainer.addEventListener('click', (e) => {
-//   // if (e.target.tagName == 'INPUT') {
-//   //   e.target.readOnly = false;
-//   //   let parent = e.target.parent
-//   //   // parent.style.background="background-color: rgba(240, 255, 104, 0.9);"
-//   //   let arr = JSON.parse(localStorage.getItem('todos'));
-//   //   let id = e.target.id
-//   //   let val = input.value
-//   //   console.log(val)
-//   //   updateItem(arr, id, val)
-//   //   localStorage.setItem('todos', JSON.stringify(arr))
-//   //   // console.log(arr)
-//   // }
-
-// })
-
-window.addEventListener('load', () => {
-  displayToDos(arr, todoContainer)
-})
+// clearCompleted.addEventListener('click', () => {
+//   clearMethod(todoContainer);
+// });
