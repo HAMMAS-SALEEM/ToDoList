@@ -20,6 +20,9 @@ export const removeItem = (id) => {
     console.log(id)
     let arr = JSON.parse(localStorage.getItem('todos'))
     arr = arr.filter(e => e.index != id)
+    for(let i=0;i<arr.length;i++){
+        arr[i].index=i
+    }
     localStorage.setItem('todos', JSON.stringify(arr))
 }
 
@@ -38,7 +41,7 @@ export const updateItem = (arr,id,name)=>{
         output.innerHTML += `<li class="todos">
           <ul class="todos-01" >
           <li><input type="checkbox" class=" toDoItems"></li>
-          <li><input type='text' value="${item.description}" class="toDoItems tdt" id=${item.index} readOnly></input></li>
+          <li><input type='text' value="${item.description}" class="toDoItems tdt inputs" id=${item.index} readOnly></input></li>
           </ul>
           <i class="fas fa-ellipsis-v"></i>
           <i class="fas fa-trash-alt" id="${item.index}"></i>

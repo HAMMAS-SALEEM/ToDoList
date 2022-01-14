@@ -80,11 +80,11 @@ section {
   
 }
 
-.tdt:focus {
+/* .tdt:focus {
   background-color: rgba(240, 255, 104, 0.9);
   border: none;
   outline: none
-}
+} */
 
 .fa-sync {
   margin-right: 10px;

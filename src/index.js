@@ -41,21 +41,27 @@ todoContainer.addEventListener('click', (e) => {
     removeItem(id);
     let locStorage = JSON.parse(localStorage.getItem('todos'));
     displayToDos(locStorage, todoContainer);
-    input.value = ''
+  } else if(e.target.tagName=='INPUT'){
+    console.log(e)
   }
 })
 
-todoContainer.addEventListener('click', (e) => {
-  if (e.target.tagName == 'INPUT') {
-    let value = e.target.value
-    console.log(value)
-    let arr = JSON.parse(localStorage.getItem('todos'));
-    e.target.readOnly = false;
-    let id = e.target.id
-    updateItem(arr, id, value)
-    localStorage.setItem('todos', JSON.stringify(arr))
-  }
-})
+
+// todoContainer.addEventListener('click', (e) => {
+//   // if (e.target.tagName == 'INPUT') {
+//   //   e.target.readOnly = false;
+//   //   let parent = e.target.parent
+//   //   // parent.style.background="background-color: rgba(240, 255, 104, 0.9);"
+//   //   let arr = JSON.parse(localStorage.getItem('todos'));
+//   //   let id = e.target.id
+//   //   let val = input.value
+//   //   console.log(val)
+//   //   updateItem(arr, id, val)
+//   //   localStorage.setItem('todos', JSON.stringify(arr))
+//   //   // console.log(arr)
+//   // }
+
+// })
 
 window.addEventListener('load', () => {
   displayToDos(arr, todoContainer)
