@@ -7,8 +7,8 @@ import {
   removeItem,
   displayToDos,
   getDescriptionInput,
-  // markCompleted,
-  // clearMethod,
+  markCompleted,
+  clearMethod,
 } from './CRUD.js';
 
 const todoContainer = document.querySelector('.todos-container');
@@ -17,7 +17,7 @@ const addBtn = document.querySelector('.fa-plus');
 // const dragBtn = document.querySelector('.fa-ellipsis-v');
 const input = document.querySelector('.toDoName');
 const locStorage = JSON.parse(localStorage.getItem('todos'));
-// const clearCompleted = document.querySelector('.clear-completed');
+const clearCompleted = document.querySelector('.clear-completed');
 
 let arr;
 if (locStorage == null) {
@@ -51,12 +51,12 @@ todoContainer.addEventListener('click', (e) => {
     const { id } = e.target;
     const arr = JSON.parse(localStorage.getItem('todos'));
     getDescriptionInput(e.target, arr, id);
-    // } else if (e.target.tagName == 'INPUT' && e.target.type === "checkbox" ) {
-    //    let id = e.target.id.replace("check-", "");
-    //    markCompleted(e.target, id, todoContainer);
+    } else if (e.target.tagName == 'INPUT' && e.target.type === "checkbox" ) {
+       let id = e.target.id.replace("check-", "");
+       markCompleted(e.target, id, todoContainer);
   }
 });
 
-// clearCompleted.addEventListener('click', () => {
-//   clearMethod(todoContainer);
-// });
+clearCompleted.addEventListener('click', () => {
+  clearMethod(todoContainer);
+});
