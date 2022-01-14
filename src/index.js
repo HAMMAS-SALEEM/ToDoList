@@ -1,31 +1,62 @@
 import './style.css';
+// import {
+//   update,
+// } from 'lodash';
+import {
+  addItem,
+  removeItem,
+  displayToDos,
+  getDescriptionInput,
+  // markCompleted,
+  // clearMethod,
+} from './CRUD.js';
 
 const todoContainer = document.querySelector('.todos-container');
+const addBtn = document.querySelector('.fa-plus');
+// const trashBtn = document.querySelector('.fa-trash-alt');
+// const dragBtn = document.querySelector('.fa-ellipsis-v');
+const input = document.querySelector('.toDoName');
+const locStorage = JSON.parse(localStorage.getItem('todos'));
+// const clearCompleted = document.querySelector('.clear-completed');
 
-const arr = [{
-  description: 'wash the dishes',
-  completed: false,
-  index: 0,
-}, {
-  description: 'complete your assignment',
-  completed: true,
-  index: 1,
-}, {
-  description: 'complete the todo list',
-  completed: false,
-  index: 2,
-}];
+let arr;
+if (locStorage == null) {
+  arr = [];
+} else {
+  arr = locStorage;
+}
 
-const displayToDos = () => {
-  arr.forEach((item) => {
-    todoContainer.innerHTML += `<li class="todos widthHeight">
-        <ul class="todos-01">
-        <li><input type="checkbox" class=" toDoItems"></li>
-        <li><p class="toDoItems">${item.description}</p></li>
-        </ul>
-        <i class="fas fa-ellipsis-v"></i>
-    </li>`;
-  });
-};
+window.addEventListener('load', () => {
+  displayToDos(arr, todoContainer);
+});
 
-window.onresize.apply = displayToDos();
+addBtn.addEventListener('click', () => {
+  const todoContainer = document.querySelector('.todos-container');
+  const inputVal = input.value;
+  addItem(arr, inputVal);
+  const locStorage = JSON.parse(localStorage.getItem('todos'));
+  input.value = '';
+  displayToDos(locStorage, todoContainer);
+});
+
+todoContainer.addEventListener('click', (e) => {
+  if (e.target.tagName === 'I' && e.target.classList.value === 'fas fa-trash-alt') {
+    const { id } = e.target;
+    removeItem(id);
+    const locStorage = JSON.parse(localStorage.getItem('todos'));
+    displayToDos(locStorage, todoContainer);
+  } else if (e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') {
+    e.target.readOnly = false;
+
+    const { id } = e.target;
+    const arr = JSON.parse(localStorage.getItem('todos'));
+    getDescriptionInput(e.target, arr, id);
+    // } else if (e.target.tagName == 'INPUT' && e.target.type === "checkbox" ) {
+    //    let id = e.target.id.replace("check-", "");
+    //    markCompleted(e.target, id, todoContainer);
+  }
+});
+
+// clearCompleted.addEventListener('click', () => {
+//   clearMethod(todoContainer);
+// });
