@@ -83,13 +83,11 @@ section {
   height: 30px;
   border: none;
   font-size: 15px;
-  
 }
 
 .tdt:focus {
-  background-color: none;
   border: none;
-  outline: none
+  outline: none;
 }
 
 .fa-sync {
