@@ -49,13 +49,16 @@ todoContainer.addEventListener('click', (e) => {
     displayToDos(locStorage, todoContainer);
   } else if (e.target.tagName == 'INPUT' && e.target.type !== "checkbox" ) {
     e.target.readOnly = false;
+    
     let id = e.target.id
     let arr = JSON.parse(localStorage.getItem('todos'));
     getDescriptionInput(e.target, arr, id);
   // } else if (e.target.tagName == 'INPUT' && e.target.type === "checkbox" ) {
   //    let id = e.target.id.replace("check-", "");
   //    markCompleted(e.target, id, todoContainer);
+
   }
+  
 });
 
 // clearCompleted.addEventListener('click', () => {

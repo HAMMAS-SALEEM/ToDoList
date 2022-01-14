@@ -86,11 +86,11 @@ section {
   
 }
 
-/* .tdt:focus {
-  background-color: rgba(240, 255, 104, 0.9);
+.tdt:focus {
+  background-color: none;
   border: none;
   outline: none
-} */
+}
 
 .fa-sync {
   margin-right: 10px;
@@ -102,14 +102,14 @@ section {
 }
 
 .fa-ellipsis-v {
-  display: inherit;
+  display: none;
   justify-self: end;
   margin-right: 18px;
 }
-/* 
+
 .fa-trash-alt {
-  display: none;
-} */
+  display: inherit;
+}
 
 button {
   border: none;
