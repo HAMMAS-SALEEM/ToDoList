@@ -69,16 +69,19 @@ export const displayToDos = (locStorage, output) => {
   });
 };
 
-// export const markCompleted = (checkbox, id, todoContainer) => {
-//     let arr = JSON.parse(localStorage.getItem("todos"));
-//     arr[id - 1].completed = checkbox.checked;
-//     localStorage.setItem("todos", JSON.stringify(arr));
-//     displayToDos(arr, todoContainer);
-// };
+export const markCompleted = (checkbox, id, todoContainer) => {
+  const arr = JSON.parse(localStorage.getItem('todos'));
+  arr[id - 1].completed = checkbox.checked;
+  localStorage.setItem('todos', JSON.stringify(arr));
+  displayToDos(arr, todoContainer);
+};
 
-// export const clearMethod = (todoContainer) => {
-//     let arr = JSON.parse(localStorage.getItem("todos"));
-//     arr = arr.filter((todo) => todo.completed !== true);
-//     localStorage.setItem("todos", JSON.stringify(arr));
-//     displayToDos(arr, todoContainer);
-// }
+export const clearMethod = (todoContainer) => {
+  let arr = JSON.parse(localStorage.getItem('todos'));
+  arr = arr.filter((todo) => todo.completed !== true);
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].index = i + 1;
+  }
+  localStorage.setItem('todos', JSON.stringify(arr));
+  displayToDos(arr, todoContainer);
+};
