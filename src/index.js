@@ -26,9 +26,7 @@ window.addEventListener('load', () => {
 });
 
 addBtn.addEventListener('click', () => {
-  if (input.value === '' || input.value === null) {
-    alert('Please insert a todo');
-  } else {
+  if (!input.value === '' || !input.value === null) {
     const todoContainer = document.querySelector('.todos-container');
     const inputVal = input.value;
     addItem(arr, inputVal);
