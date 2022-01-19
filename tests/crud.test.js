@@ -1,5 +1,5 @@
 import {
-  addItem, removeItem,
+  addItem, removeItem, displayToDos,
 } from '../src/CRUD.js';
 
 describe('Test add and remove function', () => {
@@ -57,6 +57,25 @@ describe('Test add and remove function', () => {
         completed: false,
         index: 3,
       }]));
+    });
+  });
+  describe('Append and remove content to the dom', () => {
+    test('Should Append li to the list', () => {
+      document.body.innerHTML = '<ul class="todos-container"></ul>';
+      const output = document.querySelector('.todos-container');
+      const curData = JSON.parse(localStorage.getItem('todos'));
+      displayToDos(curData, output);
+      const currentOut = document.querySelector('.todos-container');
+      expect(currentOut.childElementCount).toBe(3);
+    });
+    test('Should remove li to the list', () => {
+      document.body.innerHTML = '<ul class="todos-container"></ul>';
+      const output = document.querySelector('.todos-container');
+      removeItem(1);
+      const curData = JSON.parse(localStorage.getItem('todos'));
+      displayToDos(curData, output);
+      const currentOut = document.querySelector('.todos-container');
+      expect(currentOut.childElementCount).toBe(2);
     });
   });
 });
