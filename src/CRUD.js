@@ -23,6 +23,7 @@ export const removeItem = (id) => {
     arr[i].index = i + 1;
   }
   localStorage.setItem('todos', JSON.stringify(arr));
+  return id;
 };
 
 const updateItem = (value, id) => {
