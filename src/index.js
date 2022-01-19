@@ -26,12 +26,12 @@ window.addEventListener('load', () => {
 });
 
 addBtn.addEventListener('click', () => {
-    const todoContainer = document.querySelector('.todos-container');
-    const inputVal = input.value;
-    addItem(arr, inputVal);
-    const locStorage = JSON.parse(localStorage.getItem('todos'));
-    input.value = '';
-    displayToDos(locStorage, todoContainer);
+  const todoContainer = document.querySelector('.todos-container');
+  const inputVal = input.value;
+  addItem(arr, inputVal);
+  const locStorage = JSON.parse(localStorage.getItem('todos'));
+  input.value = '';
+  displayToDos(locStorage, todoContainer);
 });
 
 todoContainer.addEventListener('click', (e) => {
