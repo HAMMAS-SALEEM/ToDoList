@@ -30,7 +30,6 @@ export const updateItem = (value, id) => {
   const arr = JSON.parse(localStorage.getItem('todos'));
   arr[id - 1].description = value.trim();
   localStorage.setItem('todos', JSON.stringify(arr));
-  
 };
 
 export const getDescriptionInput = (input, id) => {
