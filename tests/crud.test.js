@@ -1,5 +1,5 @@
 import {
-  addItem, removeItem, displayToDos,
+  addItem, removeItem, displayToDos, updateItem, markCompleted, clearMethod,
 } from '../src/CRUD.js';
 
 describe('Test add and remove function', () => {
@@ -30,13 +30,10 @@ describe('Test add and remove function', () => {
   });
   describe('Remove Function Test', () => {
     test('should return the id of removed element', () => {
-      let currentData = JSON.parse(localStorage.getItem('todos'));
+      const currentData = JSON.parse(localStorage.getItem('todos'));
       addItem(currentData, 'Task one');
-      currentData = JSON.parse(localStorage.getItem('todos'));
       addItem(currentData, 'Task two');
-      currentData = JSON.parse(localStorage.getItem('todos'));
       addItem(currentData, 'Task three');
-      currentData = JSON.parse(localStorage.getItem('todos'));
       addItem(currentData, 'Task four');
       const removeData = removeItem(1);
       expect(removeData).toBe(1);
@@ -76,6 +73,46 @@ describe('Test add and remove function', () => {
       displayToDos(curData, output);
       const currentOut = document.querySelector('.todos-container');
       expect(currentOut.childElementCount).toBe(2);
+    });
+  });
+  describe('Should Edit Item Description', () => {
+    test('Should update value', () => {
+      updateItem('Task one on one', 1);
+      const locStore = localStorage.getItem('todos');
+      expect(locStore).toEqual(JSON.stringify([{
+        description: 'Task one on one',
+        completed: false,
+        index: 1,
+      }, {
+        description: 'Task four',
+        completed: false,
+        index: 2,
+      }]));
+    });
+    test('Should update task completion status to true', () => {
+      const currentOut = document.querySelector('.todos-container');
+      const checkbox = currentOut.children[0].children[0].children[0].children[0];
+      checkbox.setAttribute('checked', true);
+      markCompleted(checkbox, 1, currentOut);
+      const locStore = JSON.parse(localStorage.getItem('todos'));
+      expect(locStore[0].completed).toEqual(true);
+    });
+    test('Should update task completion status to false', () => {
+      const currentOut = document.querySelector('.todos-container');
+      const checkbox = currentOut.children[0].children[0].children[0].children[0];
+      checkbox.removeAttribute('checked');
+      markCompleted(checkbox, 1, currentOut);
+      const locStore = JSON.parse(localStorage.getItem('todos'));
+      expect(locStore[0].completed).toEqual(false);
+    });
+    test('Should clear all completed task', () => {
+      const currentOut = document.querySelector('.todos-container');
+      const checkbox = currentOut.children[0].children[0].children[0].children[0];
+      checkbox.setAttribute('checked', true);
+      markCompleted(checkbox, 1, currentOut);
+      clearMethod(currentOut);
+      const locStore = JSON.parse(localStorage.getItem('todos'));
+      expect(locStore.length).toEqual(1);
     });
   });
 });
