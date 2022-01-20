@@ -26,13 +26,14 @@ export const removeItem = (id) => {
   return id;
 };
 
-const updateItem = (value, id) => {
+export const updateItem = (value, id) => {
   const arr = JSON.parse(localStorage.getItem('todos'));
   arr[id - 1].description = value.trim();
   localStorage.setItem('todos', JSON.stringify(arr));
+  
 };
 
-export const getDescriptionInput = (input, arr, id) => {
+export const getDescriptionInput = (input, id) => {
   const inputDescription = input;
   input.addEventListener('keyup', () => {
     updateItem(inputDescription.value, id);

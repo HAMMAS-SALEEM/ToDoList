@@ -49,7 +49,7 @@ todoContainer.addEventListener('click', (e) => {
       id,
     } = e.target;
     const arr = JSON.parse(localStorage.getItem('todos'));
-    getDescriptionInput(e.target, arr, id);
+    getDescriptionInput(e.target, id);
   } else if (e.target.tagName === 'INPUT' && e.target.type === 'checkbox') {
     const id = e.target.id.replace('check-', '');
     markCompleted(e.target, id, todoContainer);
