@@ -1,8 +1,11 @@
+import {StorageManager} from './storageManager.js';
+
 export const addItem = (arr, value) => {
-  if (JSON.parse(localStorage.getItem('todos')) == null) {
+  
+  if (StorageManager.getLocStore() == null) {
     arr = [];
   } else {
-    arr = JSON.parse(localStorage.getItem('todos'));
+    arr = StorageManager.getLocStore();
   }
 
   const length = arr.length + 1;
@@ -12,24 +15,24 @@ export const addItem = (arr, value) => {
     index: length,
   };
   arr.push(obj);
-  localStorage.setItem('todos', JSON.stringify(arr));
+  StorageManager.setLocStore(arr)
   return arr;
 };
 
 export const removeItem = (id) => {
-  let arr = JSON.parse(localStorage.getItem('todos'));
+  let arr = StorageManager.getLocStore();
   arr = arr.filter((e) => e.index.toString() !== id.toString());
   for (let i = 0; i < arr.length; i += 1) {
     arr[i].index = i + 1;
   }
-  localStorage.setItem('todos', JSON.stringify(arr));
+  StorageManager.setLocStore(arr)
   return id;
 };
 
 export const updateItem = (value, id) => {
-  const arr = JSON.parse(localStorage.getItem('todos'));
+  const arr = StorageManager.getLocStore();
   arr[id - 1].description = value.trim();
-  localStorage.setItem('todos', JSON.stringify(arr));
+  StorageManager.setLocStore(arr)
 };
 
 export const getDescriptionInput = (input, id) => {
@@ -40,8 +43,9 @@ export const getDescriptionInput = (input, id) => {
 };
 
 export const displayToDos = (locStorage, output) => {
+  let storeManage = StorageManager.getLocStore();
   output.innerHTML = null;
-  locStorage.forEach((item) => {
+  storeManage.forEach((item) => {
     if (!item.completed) {
       output.innerHTML += `<li class="todos">
         <ul class="todos-01" >
@@ -65,18 +69,18 @@ export const displayToDos = (locStorage, output) => {
 };
 
 export const markCompleted = (checkbox, id, todoContainer) => {
-  const arr = JSON.parse(localStorage.getItem('todos'));
+  const arr = StorageManager.getLocStore();
   arr[id - 1].completed = checkbox.checked;
-  localStorage.setItem('todos', JSON.stringify(arr));
+  StorageManager.setLocStore(arr);
   displayToDos(arr, todoContainer);
 };
 
 export const clearMethod = (todoContainer) => {
-  let arr = JSON.parse(localStorage.getItem('todos'));
+  let arr = StorageManager.getLocStore();
   arr = arr.filter((todo) => todo.completed !== true);
   for (let i = 0; i < arr.length; i += 1) {
     arr[i].index = i + 1;
   }
-  localStorage.setItem('todos', JSON.stringify(arr));
+  StorageManager.setLocStore()
   displayToDos(arr, todoContainer);
 };

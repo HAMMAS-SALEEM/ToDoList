@@ -11,11 +11,11 @@ import {
 const todoContainer = document.querySelector('.todos-container');
 const addBtn = document.querySelector('.fa-plus');
 const input = document.querySelector('.toDoName');
-const locStorage = JSON.parse(localStorage.getItem('todos'));
+const locStorage = (localStorage.getItem('todos'));
 const clearCompleted = document.querySelector('.clear-completed');
 
 let arr;
-if (locStorage == null) {
+if (locStorage == null || locStorage==undefined) {
   arr = [];
 } else {
   arr = locStorage;
