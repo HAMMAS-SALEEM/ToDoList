@@ -9,6 +9,7 @@ import {
 } from './CRUD.js';
 
 const todoContainer = document.querySelector('.todos-container');
+const form = document.getElementById('form')
 const addBtn = document.querySelector('.fa-plus');
 const input = document.querySelector('.toDoName');
 const clearCompleted = document.querySelector('.clear-completed');
@@ -17,7 +18,8 @@ window.addEventListener('load', () => {
   displayToDos(todoContainer);
 });
 
-addBtn.addEventListener('click', () => {
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   const todoContainer = document.querySelector('.todos-container');
   const inputVal = input.value;
   addItem(inputVal);

@@ -37,7 +37,7 @@ export const updateItem = (value, id) => {
 
 export const getDescriptionInput = (input, id) => {
   const inputDescription = input;
-  input.addEventListener('keyup', () => {
+  input.addEventListener('blur', () => {
     updateItem(inputDescription.value, id);
   });
 };
@@ -46,25 +46,16 @@ export const displayToDos = (output) => {
   let storeManage = StorageManager.getLocStore();
   output.innerHTML = null;
   storeManage.forEach((item) => {
-    if (!item.completed) {
+    let checkBox;
+    item.completed ? checkBox='checked' : null;
       output.innerHTML += `<li class="todos">
         <ul class="todos-01" >
-        <li><input type="checkbox" id="check-${item.index}" class=" toDoItems"></li>
+        <li><input type="checkbox" id="check-${item.index}" class=" toDoItems" ${checkBox}></li>
         <li><input type='text' value="${item.description}" class="toDoItems tdt inputs" id=${item.index} readOnly></input></li>
         </ul>
         <i class="fas fa-ellipsis-v"></i>
         <i class="fas fa-trash-alt" id="${item.index}"></i>
     </li>`;
-    } else {
-      output.innerHTML += `<li class="todos">
-        <ul class="todos-01">
-        <li><input type="checkbox" class=" toDoItems" id="check-${item.index}" checked></li>
-        <li><input type='text' value="${item.description}" class="toDoItems tdt inputs completed" id="${item.index}" readOnly></input></li>
-        </ul>
-        <i class="fas fa-ellipsis-v"></i>
-        <i class="fas fa-trash-alt" id="${item.index}"></i>
-    </li>`;
-    }
   });
 };
 
