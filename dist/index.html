@@ -8,18 +8,18 @@
       src="https://kit.fontawesome.com/fe6dec7cca.js"
       crossorigin="anonymous"
     ></script>
-    <title>Todo's</title>
+    <title>Todo's List</title>
 <script defer src="main.js"></script></head>
 
 <body>
     <section>
-        <header class="section_header widthHeight">
+        <div class="section_header widthHeight">
             <h2 class="title">Today's To Do</h2>
             <i class="fas fa-sync"></i>
-        </header>
-        <form class="input widthHeight">
-            <input type="text" id="toDoName" class="toDoName" placeholder="Add to your list...">
-            <i class="fas fa-plus"></i>
+        </div>
+        <form id="form" class="input widthHeight">
+            <input type="text" id="to-do-name" class="toDoName" placeholder="Add to your list...">
+            <button type="submit"><i class="fas fa-plus"></i></button>
         </form>
         <ul class="todos-container">
             <!-- Todo List --> 
