@@ -9,8 +9,7 @@ import {
 } from './CRUD.js';
 
 const todoContainer = document.querySelector('.todos-container');
-const form = document.getElementById('form')
-const addBtn = document.querySelector('.fa-plus');
+const form = document.getElementById('form');
 const input = document.querySelector('.toDoName');
 const clearCompleted = document.querySelector('.clear-completed');
 

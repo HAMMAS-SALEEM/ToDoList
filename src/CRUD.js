@@ -1,4 +1,4 @@
-import {StorageManager} from './storageManager.js';
+import StorageManager from './storageManager.js';
 
 export const addItem = (value) => {
   let arr;
@@ -15,24 +15,24 @@ export const addItem = (value) => {
     index: length,
   };
   arr.push(obj);
-  StorageManager.setLocStore(arr)
+  StorageManager.setLocStore(arr);
   return arr;
 };
 
 export const removeItem = (id) => {
   let arr = StorageManager.getLocStore();
   arr = arr.filter((e) => e.index.toString() !== id.toString());
-  for (let i = 0; i < arr.length; i += 1) {
-    arr[i].index = i + 1;
-  }
-  StorageManager.setLocStore(arr)
+  arr.forEach((item, index) => {
+    item.index = index + 1;
+  });
+  StorageManager.setLocStore(arr);
   return id;
 };
 
 export const updateItem = (value, id) => {
   const arr = StorageManager.getLocStore();
   arr[id - 1].description = value.trim();
-  StorageManager.setLocStore(arr)
+  StorageManager.setLocStore(arr);
 };
 
 export const getDescriptionInput = (input, id) => {
@@ -43,12 +43,14 @@ export const getDescriptionInput = (input, id) => {
 };
 
 export const displayToDos = (output) => {
-  let storeManage = StorageManager.getLocStore();
+  const storeManage = StorageManager.getLocStore();
   output.innerHTML = null;
   storeManage.forEach((item) => {
     let checkBox;
-    item.completed ? checkBox='checked' : null;
-      output.innerHTML += `<li class="todos">
+    if (item.completed) {
+      checkBox = 'checked';
+    }
+    output.innerHTML += `<li class="todos">
         <ul class="todos-01" >
         <li><input type="checkbox" id="check-${item.index}" class=" toDoItems" ${checkBox}></li>
         <li><input type='text' value="${item.description}" class="toDoItems tdt inputs" id=${item.index} readOnly></input></li>
@@ -69,9 +71,9 @@ export const markCompleted = (checkbox, id, todoContainer) => {
 export const clearMethod = (todoContainer) => {
   let arr = StorageManager.getLocStore();
   arr = arr.filter((todo) => todo.completed !== true);
-  for (let i = 0; i < arr.length; i += 1) {
-    arr[i].index = i + 1;
-  }
-  StorageManager.setLocStore(arr)
+  arr.forEach((item, index) => {
+    item.index = index + 1;
+  });
+  StorageManager.setLocStore(arr);
   displayToDos(todoContainer);
 };
