@@ -11,27 +11,18 @@ import {
 const todoContainer = document.querySelector('.todos-container');
 const addBtn = document.querySelector('.fa-plus');
 const input = document.querySelector('.toDoName');
-const locStorage = (localStorage.getItem('todos'));
 const clearCompleted = document.querySelector('.clear-completed');
 
-let arr;
-if (locStorage == null || locStorage==undefined) {
-  arr = [];
-} else {
-  arr = locStorage;
-}
-
 window.addEventListener('load', () => {
-  displayToDos(arr, todoContainer);
+  displayToDos(todoContainer);
 });
 
 addBtn.addEventListener('click', () => {
   const todoContainer = document.querySelector('.todos-container');
   const inputVal = input.value;
-  addItem(arr, inputVal);
-  const locStorage = JSON.parse(localStorage.getItem('todos'));
+  addItem(inputVal);
   input.value = '';
-  displayToDos(locStorage, todoContainer);
+  displayToDos(todoContainer);
 });
 
 todoContainer.addEventListener('click', (e) => {
@@ -40,8 +31,7 @@ todoContainer.addEventListener('click', (e) => {
       id,
     } = e.target;
     removeItem(id);
-    const locStorage = JSON.parse(localStorage.getItem('todos'));
-    displayToDos(locStorage, todoContainer);
+    displayToDos(todoContainer);
   } else if (e.target.tagName === 'INPUT' && e.target.type !== 'checkbox') {
     e.target.readOnly = false;
 

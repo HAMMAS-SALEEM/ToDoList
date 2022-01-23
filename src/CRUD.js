@@ -1,7 +1,7 @@
 import {StorageManager} from './storageManager.js';
 
-export const addItem = (arr, value) => {
-  
+export const addItem = (value) => {
+  let arr;
   if (StorageManager.getLocStore() == null) {
     arr = [];
   } else {
@@ -42,7 +42,7 @@ export const getDescriptionInput = (input, id) => {
   });
 };
 
-export const displayToDos = (locStorage, output) => {
+export const displayToDos = (output) => {
   let storeManage = StorageManager.getLocStore();
   output.innerHTML = null;
   storeManage.forEach((item) => {
@@ -72,7 +72,7 @@ export const markCompleted = (checkbox, id, todoContainer) => {
   const arr = StorageManager.getLocStore();
   arr[id - 1].completed = checkbox.checked;
   StorageManager.setLocStore(arr);
-  displayToDos(arr, todoContainer);
+  displayToDos(todoContainer);
 };
 
 export const clearMethod = (todoContainer) => {
@@ -81,6 +81,6 @@ export const clearMethod = (todoContainer) => {
   for (let i = 0; i < arr.length; i += 1) {
     arr[i].index = i + 1;
   }
-  StorageManager.setLocStore()
-  displayToDos(arr, todoContainer);
+  StorageManager.setLocStore(arr)
+  displayToDos(todoContainer);
 };
