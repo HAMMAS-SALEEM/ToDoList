@@ -4,7 +4,7 @@
 > This web application provides users a convenient way to keep track of their daily routine works. Users can add and remove tasks from the list of tasks they curate on the website.
 
 
-![SCREENSHOT](./assets/todo.GIF)
+![SCREENSHOT](./src/assets/todo.GIF)
 
 
 ## Built With
